@@ -11,7 +11,7 @@ on:
 jobs:
   analyze:
     name: Analyze Code with CodeQL
-    runs-on: window-latest
+    runs-on: ubuntu-latest
     permissions:
       actions: read
       contents: read
