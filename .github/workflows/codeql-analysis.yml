@@ -21,8 +21,8 @@ jobs:
       - name: Initialize CodeQL
         uses: github/codeql-action/init@v3
         with:
-          languages: 'typescript, javascript'   # ✅ Multiple languages in one job
-          queries: security-and-quality
+          languages: 'typescript, javascript'
+          queries: security-extended, security-and-quality  # ✅ Extended queries added
 
       - name: Perform CodeQL Analysis
         uses: github/codeql-action/analyze@v3
