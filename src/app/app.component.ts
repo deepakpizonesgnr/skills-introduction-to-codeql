@@ -17,11 +17,11 @@ export class AppComponent {
     const userInput = this.getUserInput();
 
     // ✅ Explicitly cast 'document' to the correct type
-    const doc = document as Document ;
+    const doc = document as Document  ;
     doc.body.innerHTML = `<div>${userInput}</div>`;
   }
 
   getUserInput(): string {
-    return 'Hello, Angular!' ;
+    return 'Hello, Angular!'  ;
   }
 }

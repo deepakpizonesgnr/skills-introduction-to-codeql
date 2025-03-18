@@ -1,16 +1,13 @@
-name: "CodeQL Analysis"
+name: "CodeQL"
 
 on:
   push:
-    branches: [main, develop]
+    branches: [ main ]
   pull_request:
-    branches: [main, develop]
-  schedule:
-    - cron: '0 12 * * 1'  # Runs every Monday at 12:00 UTC
+    branches: [ main ]
 
 jobs:
-  analyze:
-    name: Analyze Code with CodeQL
+  codeql-analysis:
     runs-on: ubuntu-latest
     permissions:
       actions: read
@@ -18,17 +15,19 @@ jobs:
       security-events: write
 
     strategy:
+      fail-fast: false
       matrix:
-        language: [typescript]
+        language: [ 'typescript' ]  # Use the appropriate language
 
     steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v3
+    - name: Checkout Repository
+      uses: actions/checkout@v4
 
-      - name: Initialize CodeQL
-        uses: github/codeql-action/init@3
-        with:
-          languages: ${{ matrix.language }}
+    - name: Initialize CodeQL
+      uses: github/codeql-action/init@v3  # ✅ Use v3
+      with:
+        languages: ${{ matrix.language }}
+        queries: security-extended  # ✅ Add this to include more security checks
 
-      - name: Perform CodeQL Analysis
-        uses: github/codeql-action/analyze@v3
+    - name: Perform CodeQL Analysis
+      uses: github/codeql-action/analyze@v3
