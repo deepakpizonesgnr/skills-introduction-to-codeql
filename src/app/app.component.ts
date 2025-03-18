@@ -2,9 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { HttpClient } from '@angular/common/http';
 import * as crypto from 'crypto';
+import { RouterOutlet, RouterModule } from '@angular/router';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-root',
+  standalone: true,
+  imports: [CommonModule, RouterOutlet, RouterModule],  // ✅ Include RouterModule
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
