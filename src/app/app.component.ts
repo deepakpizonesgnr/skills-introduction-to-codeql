@@ -14,14 +14,12 @@ export class AppComponent {
 
   // ✅ Ensure DOM manipulations are inside a lifecycle hook
   ngOnInit() {
-    const userInput = this.getUserInput();
-
-    // ✅ Explicitly cast 'document' to the correct type
-    const doc = document as Document   ;
-    doc.body.innerHTML = `<div>${userInput}</div>`;
+    const maliciousInput = `<script>alert('XSS Attack!')</script>`;
+    
+    // ❌ Vulnerable DOM injection
+    const doc = document as Document;
+    doc.body.innerHTML = maliciousInput;   // ✅ XSS vulnerability
   }
 
-  getUserInput(): string {
-    return 'Hello, Angular!'   ;
-  }
+ 
 }
