@@ -14,20 +14,15 @@ jobs:
       contents: read
       security-events: write
 
-    strategy:
-      fail-fast: false
-      matrix:
-        language: [ 'typescript','javascript'  ]  # Use the appropriate language
-
     steps:
-    - name: Checkout Repository
-      uses: actions/checkout@v4
+      - name: Checkout Repository
+        uses: actions/checkout@v4
 
-    - name: Initialize CodeQL
-      uses: github/codeql-action/init@v3  # ✅ Use v3
-      with:
-        languages: ${{ matrix.language }}
-        queries: security-and-quality  # ✅ More thorough checks  # ✅ Add this to include more security checks
+      - name: Initialize CodeQL
+        uses: github/codeql-action/init@v3
+        with:
+          languages: 'typescript, javascript'   # ✅ Multiple languages in one job
+          queries: security-and-quality
 
-    - name: Perform CodeQL Analysis
-      uses: github/codeql-action/analyze@v3
+      - name: Perform CodeQL Analysis
+        uses: github/codeql-action/analyze@v3
