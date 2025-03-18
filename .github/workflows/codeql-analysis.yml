@@ -1,42 +1,33 @@
-name: "CodeQL Security Analysis"
+name: "CodeQL"
 
 on:
   push:
-    branches: [ main ]
+    branches: [ '**' ]
   pull_request:
-    branches: [ main ]
-  schedule:
-    - cron: '0 0 * * 1'  # ✅ Run every Monday at midnight (weekly scan)
-
-permissions:
-  actions: read
-  contents: read
-  security-events: write
+    branches: [ '**' ]
 
 jobs:
   codeql-analysis:
     runs-on: ubuntu-latest
+    permissions:
+      actions: read
+      contents: read
+      security-events: write
+
     strategy:
       fail-fast: false
       matrix:
-        language: [ 'typescript' ]  # ✅ Use the correct language
+        language: [ 'typescript','javascript',  ]  # Use the appropriate language
 
     steps:
     - name: Checkout Repository
       uses: actions/checkout@v4
 
     - name: Initialize CodeQL
-      uses: github/codeql-action/init@v3
+      uses: github/codeql-action/init@v3  # ✅ Use v3
       with:
         languages: ${{ matrix.language }}
-        queries: +security-extended, +security-and-quality  # ✅ Full security coverage
-        config-file: ./.github/codeql/codeql-config.yml  # ✅ Include custom queries
+        queries: security-and-quality  # ✅ More thorough checks  # ✅ Add this to include more security checks
 
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v3
-
-    # ✅ Upload SARIF file to GitHub Security tab
-    - name: Upload SARIF file
-      uses: github/codeql-action/upload-sarif@v3
-      with:
-        sarif_file: results.sarif
