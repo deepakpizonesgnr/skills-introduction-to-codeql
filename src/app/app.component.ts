@@ -7,8 +7,21 @@ import { RouterOutlet } from '@angular/router';
   standalone: true,
   imports: [CommonModule, RouterOutlet],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.scss'
+  styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'CodeQl';
+  title = 'New Angular Project';
+
+  // ✅ Ensure DOM manipulations are inside a lifecycle hook
+  ngOnInit() {
+    const userInput = this.getUserInput();
+
+    // ✅ Explicitly cast 'document' to the correct type
+    const doc = document as Document;
+    doc.body.innerHTML = `<div>${userInput}</div>`;
+  }
+
+  getUserInput(): string {
+    return 'Hello, Angular!';
+  }
 }
