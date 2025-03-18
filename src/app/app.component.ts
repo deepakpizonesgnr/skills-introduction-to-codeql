@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { HttpClient } from '@angular/common/http';
-import * as crypto from 'crypto';
+// import * as crypto from 'crypto';
 import { RouterOutlet, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 
@@ -110,19 +110,23 @@ export class AppComponent implements OnInit {
     console.log('Deserialized Data:', deserializedData);
   }
 
-  // ✅ 7. Weak Cryptography
-  testWeakCryptography() {
-    console.log('Testing Weak Cryptography...');
+  // // ✅ 7. Weak Cryptography
+  // testWeakCryptography() {
+  //   console.log('Testing Weak Cryptography...');
 
-    // ❌ Use of Weak Encryption (DES)
-    const key = crypto.randomBytes(8);  // 8 bytes for DES (insecure)
-    const iv = crypto.randomBytes(8);
-    const cipher = crypto.createCipheriv('des-ecb', key, iv);
-    const encrypted = cipher.update('Sensitive Data', 'utf8', 'hex') + cipher.final('hex');
-    console.log('Weak Encryption:', encrypted);
+  //   // ❌ Use of Weak Encryption (DES)
+  //   const key = crypto.randomBytes(8);  // 8 bytes for DES (insecure)
+  //   const iv = crypto.randomBytes(8);
+  //   const cipher = crypto.createCipheriv('des-ecb', key, iv);
+  //   const encrypted = cipher.update('Sensitive Data', 'utf8', 'hex') + cipher.final('hex');
+  //   console.log('Weak Encryption:', encrypted);
 
-    // ❌ Use of MD5 for password hashing (insecure)
-    const md5Hash = crypto.createHash('md5').update('password').digest('hex');
-    console.log('MD5 Hash:', md5Hash);
-  }
+  //   // ❌ Use of MD5 for password hashing (insecure)
+  //   const md5Hash = crypto.createHash('md5').update('password').digest('hex');
+  //   console.log('MD5 Hash:', md5Hash);
+  // }
+
+
+
+  
 }
