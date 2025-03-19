@@ -4,11 +4,13 @@ import { HttpClient } from '@angular/common/http';
 // import * as crypto from 'crypto';
 import { RouterOutlet, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http';
+import { BrowserModule } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, RouterOutlet, RouterModule],  // ✅ Include RouterModule
+  imports: [CommonModule, RouterOutlet, RouterModule,HttpClientModule, BrowserModule],  // ✅ Include RouterModule
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
@@ -16,7 +18,7 @@ export class AppComponent implements OnInit {
   
   userInput = `<script>alert('XSS Attack!')</script>`;
 
-  constructor(private sanitizer: DomSanitizer, private http: HttpClient) {}
+  constructor(public sanitizer: DomSanitizer, public http: HttpClient) {}
 
   ngOnInit() {
     // ✅ 1. XSS Vulnerabilities
