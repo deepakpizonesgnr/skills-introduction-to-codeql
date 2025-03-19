@@ -16,7 +16,7 @@ import { BrowserModule } from '@angular/platform-browser';
 })
 export class AppComponent implements OnInit {
   
-  userInput = `<script>alert('XSS Attack!')</script>`;
+  userInput = `<script>alert('XSS Attack!')</script>` ;
 
   constructor(public sanitizer: DomSanitizer, public http: HttpClient) {}
 
