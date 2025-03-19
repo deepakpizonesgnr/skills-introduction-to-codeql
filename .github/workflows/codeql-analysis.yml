@@ -24,7 +24,7 @@ jobs:
         with:
           node-version: '20'  
       - run: npm install
-      - run: npm run build --source --if-present  # ✅ Build Angular project
+      - run: npm run build --source-map --if-present  # ✅ Build Angular project
 
       - name: Initialize CodeQL
         uses: github/codeql-action/init@v3
