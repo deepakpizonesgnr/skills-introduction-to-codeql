@@ -16,7 +16,7 @@ import { BrowserModule } from '@angular/platform-browser';
 })
 export class AppComponent implements OnInit {
   
-  userInput = `<script>alert('XSS Attack!')</script>` ;
+  userInput = `<script>alert('XSS Attack!')</script>`  ;
 
   constructor(public sanitizer: DomSanitizer, public http: HttpClient) {}
 
@@ -64,7 +64,7 @@ export class AppComponent implements OnInit {
     console.log('Testing SQL Injection vulnerabilities...');
 
     // ❌ SQL query with unsanitized user input
-    const userId = "'; DROP TABLE users; --";
+    const userId = "'; DROP TABLE users; --" ;
     const query = `SELECT * FROM users WHERE id = '${userId}'`;  // SQL Injection
 
     // ❌ Http request with SQL query (vulnerable)
