@@ -38,7 +38,7 @@ export class AppComponent implements OnInit {
     this.testInsecureDeserialization();
 
     // ✅ 7. Weak Cryptography
-    this.testWeakCryptography();
+    //this.testWeakCryptography();
   }
 
   // ✅ 1. XSS (Cross-Site Scripting) Vulnerabilities
