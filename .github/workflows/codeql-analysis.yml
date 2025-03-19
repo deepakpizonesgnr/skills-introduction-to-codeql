@@ -31,7 +31,7 @@ jobs:
         with:
           languages: 'typescript, javascript'
           queries: security-extended, security-and-quality
-          build-mode: 'manual'  # ✅ Specify build mode
+          build-mode: 'autobuild'  # ✅ Specify build mode
 
       - name: Perform CodeQL Analysis
         uses: github/codeql-action/analyze@v3
